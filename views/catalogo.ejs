@@ -3,14 +3,22 @@
 
 <%- include('./partials/head') %>
 
-<body>
-  <%- include('./partials/header')  %> 
+<body class="bg-blue2">
+  <!-- <%- include('./partials/header')  %>  -->
 
-  <main>
-    <!-- Catalogo -->
+  <main class="">
+    <div class="conteiner">
+      <div class="content">
+        <h1 class="display-1 text-center">Catálogo</h1>
+        
+        <% for(anime of animes) { %> 
+          <%- include('./partials/animeCard', {anime: anime}) %>     
+        <% } %>
+      </div>
+    </div>    
   </main>
 
-  <%- include('./partials/footer') %> 
+  <!-- <%- include('./partials/footer') %>  -->
   <%- include('./partials/scripts') %> 
 </body>
 </html>

@@ -1,8 +1,31 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+:root{
+  /* CSS HEX */
+  --tufts-blue: #3e92ccff;
+  --lapis-lazuli: #2a628fff;
+  --prussian-blue: #13293dff;
+  --prussian-blue-2: #16324fff;
+  --indigo-dye: #18435aff;
 }
 
-a {
-  color: #00B7FF;
+*{
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+.bg-blue1{
+  background-color: var(--tufts-blue);
+}
+.bg-blue2{
+  background-color: var(--lapis-lazuli);
+}
+.bg-blue3{
+  background-color: var(--prussian-blue);
+}
+.bg-blue4{
+  background-color: var(--prussian-blue-2);
+}
+.bg-blue5{
+  background-color: var(--indigo-dye);
 }
