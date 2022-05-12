@@ -1,0 +1,21 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
+
+input[type='search']{
+    /* border: 0;
+    background-color: transparent;
+    border-bottom: 2px lightgray solid;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    padding: 2rem 0 1rem 5rem;
+    font-size: 2rem; */
+    
+}
+
+input[type='search']::placeholder{
+    color: lightgray;
+}
+
+input[type='search']:focus{
+    outline: none!important;
+    box-shadow: none;
+}

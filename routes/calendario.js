@@ -5,7 +5,7 @@ const pageCSS = 'calendario'
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('catalogo', { pageCSS: pageCSS });
+  res.render('calendario', { pageCSS: pageCSS });
 });
 
 module.exports = router;

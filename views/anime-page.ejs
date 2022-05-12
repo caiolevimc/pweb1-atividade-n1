@@ -8,9 +8,24 @@
 
   <main>
     <!-- Animes Page -->
+
+    <div class="row">
+      <img class="col d-inline-block" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeJapones %> Capa" width="300" height="442,5">
+      <div class="col d-inline-block" id="info-basica">
+        <h1 class="" id="anime-title"><%= anime.nomeJapones %></h1>
+        <% if(anime.nomeJapones !== anime.nomeIngles) { %>
+          <h2 class="fst-italic h3" id="alternative-title"><%= anime.nomeIngles %> </h2>
+        <% } %>
+        <h4>Gêneros: <%= anime.generos.join(', ') %> </h4>
+      </div>
+    </div>
+    <div class="row">
+      <p class="col w-75"><%= anime.sinopse %> </p>
+    </div>
+
   </main>
 
-  <%- include('./partials/footer') %> 
+  <!-- <%- include('./partials/footer') %>  -->
   <%- include('./partials/scripts') %> 
 </body>
 </html>
