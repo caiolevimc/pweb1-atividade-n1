@@ -3,7 +3,7 @@ const animes = [
     nomeJapones: "Akebi-chan no Sailor-fuku",
     nomeIngles: "Akebi's Sailor Uniform",
     lancamento: 2022,
-    generos: ["Escolar", "Slice of Life", "Comédia"],
+    generos: ["Escolar", "Slice-of-Life", "Comédia"],
     sinopse: `Com seu uniforme de marinheiro, Komichi Akebi está pronta para tudo. Até mesmo seu primeiro dia na prestigiosa Academia Robai!`,
     url: "akebi-chan-no-sailor-fuku",
   },
@@ -52,7 +52,7 @@ const animes = [
     nomeJapones: "Imouto sae Ireba Ii",
     nomeIngles: "A Sister's All You Need",
     lancamento: 2017,
-    generos: ["Comédia", "Ecchi", "Romance", "Slice of Life"],
+    generos: ["Comédia", "Ecchi", "Romance", "Slice-of-Life"],
     sinopse: `Esta é a história de Itsuki Hashima, um autor com uma vida atribulada por amigos dementes, uma colega de trabalho viciada em sexo e um contador metido a sádico.A única pessoa estável na vida de Itsuki é seu meio-irmão mais novo, Chihiro, mas até ele guarda um segredo... "Ele" na verdade é "ela."`,
     url: "imouto-sae-ireba-ii",
   },
@@ -60,7 +60,7 @@ const animes = [
     nomeJapones: "Arifureta Shokugyou de Sekai Saikyou",
     nomeIngles: "Arifureta: From Commonplace to World's Strongest",
     lancamento: 2019,
-    generos: ["Ação/Aventura", "Fantasia", "Harem"],
+    generos: ["Ação/Aventura", "Fantasia", "Harem", "Isekai"],
     sinopse: `Hajime Nagumo, um garoto de 17 anos, foi transportado para outro mundo juntamente com o resto de sua classe, é convocado para um mundo de fantasia! Eles são tratados como heróis e encarregados do dever de salvar a raça humana da extinção. Por receber poderes que não seriam úteis para combate, ele é ridicularizado e intimidado por seus colegas de classe por ser fraco. Em determinado momento, ele cai no fundo de uma Dungeon. Para sair de lá, ele terá que abandonar completamente seu eu fraco e ingênuo do passado.`,
     url: "arifureta-shokugyou-de-sekai-saikyou",
   },
@@ -68,7 +68,7 @@ const animes = [
     nomeJapones: "Tate no Yuusha no Nariagari",
     nomeIngles: "The Rising of the Shield Hero",
     lancamento: 2019,
-    generos: ["Ação/Aventura", "Fantasia"],
+    generos: ["Ação/Aventura", "Fantasia", "Isekai"],
     sinopse: `Naofumi Iwatani passa todos os dias se dua vida jogando e lendo mangás. Certo dia, ele é chamado em um universo paralelo e descobre que faz parte um grupo de super-heróis e precisa carregar o peso de salvar o mundo de uma profecia em suas costas.`,
     url: "tate-no-yuusha-no-nariagari",
   },
@@ -84,7 +84,7 @@ const animes = [
     nomeJapones: "Kobayashi-san Chi no Maid Dragon",
     nomeIngles: "Miss Kobayashi's Dragon Maid",
     lancamento: 2017,
-    generos: ["Slice of Life", "Fantasia", "Comédia"],
+    generos: ["Slice-of-Life", "Fantasia", "Comédia"],
     sinopse: `Kobayashi estava em um excursão pelas montanhas quando encontrou um dragão que tinha forma de mulher. Sem se lembrar de nada, Kobayashi não imaginava que o dragão estava grato pelo encontro e que havia prometido recompensá-la. Dias depois, o dragão, vindo de outro mundo, se apresentou a ela e acabou ganhando sua confiança, eventualmente se mudando para sua casa.`,
     url: "kobayashi-san-chi-no-maid-dragon",
   },
@@ -92,7 +92,7 @@ const animes = [
     nomeJapones: "Tensei shitara Slime Datta Ken",
     nomeIngles: "That Time I Got Reincarnated as a Slime",
     lancamento: 2018,
-    generos: ["Ação/Aventura", "Fantasia", "Comédia"],
+    generos: ["Ação/Aventura", "Fantasia", "Comédia", "Isekai"],
     sinopse: `Minami Satoru, funcionário de uma grande coorporação, é assassinado e renasce num mundo paralelo. No entanto, algo está diferente: ele renasceu como um slime. Lá ele faz muitos amigos e com suas novas habilidades ele enfrenta diversas batalhas que o deixam entre a vida e a morte.`,
     url: "tensei-shitara-slime-datta-ken",
   },
@@ -100,13 +100,25 @@ const animes = [
     nomeJapones: "Black Clover",
     nomeIngles: "Black Clover",
     lancamento: 2017,
-    generos: ["Ação/Aventura", "Fantasia", "Comédia"],
+    generos: ["Ação/Aventura", "Fantasia", "Comédia", "Shounen"],
     sinopse: `Dois orfãos, Asta e Yuno, foram criados em uma igreja no reino de Clover. Asta nasceu sem poderes mágicos, mas Yuno nasceu como prodígio. Carregado de frustração, certo dia Asta encontra um poder chamado "anti magia" e cria uma rivalidade não intencional com seu próprio irmão.`,
     url: "black-clover",
   },
-];
+].sort((anime1, anime2) => {
+  if(anime1.nomeJapones > anime2.nomeJapones){
+    return 1
+  } else if(anime1.nomeJapones < anime2.nomeJapones){
+    return -1
+  } else {
+    return 0
+  }
+});
+
+
 
 module.exports = animes;
+
+
 
 /*
 

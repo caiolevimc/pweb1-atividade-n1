@@ -12,12 +12,14 @@
 
   
     <div class="overlay w-100 d-block position-absolute h-100 fit-cover" style=" z-index: -10 ; background: linear-gradient(180deg, rgba(33,37,41,1) 0%, rgba(33,37,41,0.21612394957983194) 47%, rgba(33,37,41,1) 100%);"></div>
-    <img class="w-100 d-block position-absolute h-100 fit-cover" src="../images/banners/<%= anime.url %>.jpg" alt="Slide Image" style="filter: blur(6px); z-index: -100;">
+    <img class="w-100 d-block position-absolute h-100 fit-cover" src="../images/banners/<%= anime.url %>.jpg" alt="background" style="filter: blur(6px); z-index: -100;">
 
     <div class="row row-cols-sm-1 row-cols-md-2 mx-auto justify-content-center w-75 py-5" style="z-index: 1;" style="background-color: rgba(0,0,0,0.5)!important;">
+
       <img class="d-inline-block" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeJapones %> Capa" style="max-width: 300px; height: 442.5px;">
+
       <div class="d-inline-block" id="info-basica">
-        <h1 class="" id="anime-title"><%= anime.nomeJapones %> (<%= anime.lancamento %>)</h1>
+        <h1 class="h2" id="anime-title"><%= anime.nomeJapones %> (<%= anime.lancamento %>)</h1>
         <% if(anime.nomeJapones !== anime.nomeIngles) { %>
           <h2 class="fst-italic h3 text-center" id="alternative-title"><%= anime.nomeIngles %> </h2>
         <% } %>

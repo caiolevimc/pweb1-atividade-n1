@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 const pageCSS = 'anime-page'
-const animes = require('./database')
+const animes = require('../public/javascripts/database/animes')
 
 /* GET home page. */
 router.get('/', function(req, res, next){
