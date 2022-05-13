@@ -1,3 +1,7 @@
 #alternative-title{
     color: var(--prussian-blue);
 }
+
+@media (max-width: 575.98px) {
+    
+}

@@ -33,3 +33,17 @@ body{
 .bg-blue5{
   background-color: var(--indigo-dye);
 }
+
+.anime-card:hover {
+	-ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.03);
+}
+
+.navbar-options .navbar-collapse {
+  flex-grow: none;
+}
+
+.navbar>.container-fluid{
+  justify-content: space-around;
+}
