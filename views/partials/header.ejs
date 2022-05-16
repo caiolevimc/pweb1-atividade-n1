@@ -1,5 +1,5 @@
-<header class="">
-    <nav class="navbar navbar-light navbar-expand-md sticky-top navbar-dark bg-dark py-3 vw-100">
+<header class="sticky-top">
+    <nav class="navbar navbar-light navbar-expand-md navbar-dark bg-dark py-3 vw-100">
         <div class="container-fluid w-65 mx-auto">
             <a class="navbar-brand justify-content-start" href="/">Projeto Anime</a>
             <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
@@ -8,9 +8,9 @@
             </button>
             <div class="navbar-options collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/explorar">Explorar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/calendario">Calendário</a></li>
+                    <li class="nav-item"><a class="nav-link <% if (page === 'index') { %> active <% } %>" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link <% if (page === 'explorar') { %> active <% } %>" href="/explorar">Explorar</a></li>
+                    <li class="nav-item"><a class="nav-link <% if (page === 'calendario') { %> active <% } %>" href="/calendario">Calendário</a></li>
                 </ul>
             </div>
         </div>

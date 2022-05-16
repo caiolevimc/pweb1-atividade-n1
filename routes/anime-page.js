@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const pageCSS = 'anime-page'
+const page = 'anime-page'
 const animes = require('../public/javascripts/database/animes')
 
 /* GET home page. */
@@ -11,9 +11,7 @@ router.get('/', function(req, res, next){
 })
 router.get('/:animeUrl', function(req, res, next) { 
   const anime = getAnime(req.params['animeUrl'])
-  console.log(req.params['animeUrl'])
-  console.log(anime)
-  res.render('anime-page', { pageCSS: pageCSS, anime: anime});
+  res.render('anime-page', { page: page, anime: anime});
 });
 
 module.exports = router;

@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-const pageCSS = 'index'
+const page = 'index'
 const animes = require('../public/javascripts/database/animes')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { 
-    pageCSS: pageCSS,
+    page: page,
     animes: animes
   });
 });

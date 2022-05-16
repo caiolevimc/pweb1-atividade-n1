@@ -3,17 +3,15 @@
 
 <%- include('./partials/head') %>
 
-<body class="w-100 h-100">
-  <div id="background">
-    <img class="vw-100 d-block position-fixed vh-100 fit-cover" src="../images/banners/black-clover.jpg" alt="background" style="filter: blur(5px); z-index: -100;">
-  </div>
+<body class="">
+  <%- include('./partials/background') %> 
   <%- include('./partials/header')  %>
   <main>
-    <!-- <div class="overlay w-100 d-block position-absolute h-100 fit-cover" style=" z-index: -10 ; background: linear-gradient(180deg, rgba(33,37,41,1) 0%, rgba(33,37,41,0.21612394957983194) 47%, rgba(33,37,41,1) 100%);"></div> -->
+    
     
 
 
-    <div class="w-75 mx-auto px-5" style="background-color: rgba(0,0,0,.8);">
+    <div class="w-75 mx-auto px-5" style="background-color: rgba(0,0,0,.8);" id="content">
 
       <div class="input-group pt-5 mb-5 border-bottom border-2 pb-2">
         <div class="input-group-prepend ps-1 ps-md-2 ps-lg-3">
@@ -24,9 +22,9 @@
 
       <!-- Generos Grid -->
       <div class="mx-auto justify-content-center row row-cols-1 row-cols-sm-2 row-cols-md-auto row-cols-lg-8 my-5" id="generos">
-        <a class="btn btn-primary m-1" href="/explorar">Todos</a>
+        <a class="type-buttons btn btn-light m-1" href="/explorar">Todos</a>
         <% for( genero of generos ) { %>
-          <a class="btn btn-primary m-1" href="/explorar/<%= genero.url %>"><%= genero.nome %></a>
+          <a class="type-buttons btn btn-light m-1" href="/explorar/<%= genero.url %>"><%= genero.nome %></a>
         <% } %>
       </div>
 
@@ -38,10 +36,10 @@
         <% } else { %>
           <% for(anime of animes) { %> 
             <div class="col w-auto h-auto p-0 mx-1 mb-3" style="height: 350; max-width: 200px;">
-              <a class="text-decoration-none" href="/anime/<%= anime.url %> ">
-                  <img class="anime-card" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeIngles %> Capa" style="width: 200px; height: 295px; border-radius: 8px; margin: 3px;
-                  transition: transform 0.98s; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
-              </a>
+                <a class="text-decoration-none" href="/anime/<%= anime.url %> ">
+                    <img class="anime-card" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeIngles %> Capa" style="width: 200px; height: 295px; border-radius: 8px; margin: 3px;
+                    transition: transform 0.98s; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                </a>
           </div>     
           <% } %>
         <% } %>

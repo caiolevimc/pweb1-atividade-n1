@@ -3,46 +3,42 @@
 
 <%- include('./partials/head') %>
 
-<body>
+<body class="">
+  <div id="background">
+    <img class="vw-100 d-block position-fixed vh-100 fit-cover" src="../images/banners/<%= anime.url %>.jpg" alt="background" style="filter: blur(5px); z-index: -100;">
+  </div>
   <%- include('./partials/header')  %> 
 
   <main class="vw-100">
     <!-- Animes Page -->
 
 
-  
-    <div class="overlay w-100 d-block position-absolute h-100 fit-cover" style=" z-index: -10 ; background: linear-gradient(180deg, rgba(33,37,41,1) 0%, rgba(33,37,41,0.21612394957983194) 47%, rgba(33,37,41,1) 100%);"></div>
-    <img class="w-100 d-block position-absolute h-100 fit-cover" src="../images/banners/<%= anime.url %>.jpg" alt="background" style="filter: blur(6px); z-index: -100;">
+    <div class="w-75 mx-auto px-5" style="background-color: rgba(0,0,0,.8);">
 
-    <div class="row row-cols-sm-1 row-cols-md-2 mx-auto justify-content-center w-75 py-5" style="z-index: 1;" style="background-color: rgba(0,0,0,0.5)!important;">
+      <div class="row row-cols-sm-1 row-cols-md-2 justify-content-center py-5" style="z-index: 1;" style=" margin: 0;background-color: rgba(0,0,0,0.5)!important;">
 
-      <img class="d-inline-block" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeJapones %> Capa" style="max-width: 300px; height: 442.5px;">
+        <img class="d-inline-block" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeIngles %> Capa" style="max-width: 300px; height: 442.5px;">
 
-      <div class="d-inline-block" id="info-basica">
-        <h1 class="h2" id="anime-title"><%= anime.nomeJapones %> (<%= anime.lancamento %>)</h1>
-        <% if(anime.nomeJapones !== anime.nomeIngles) { %>
-          <h2 class="fst-italic h3 text-center" id="alternative-title"><%= anime.nomeIngles %> </h2>
-        <% } %>
-        <p id="anime-generos"><%= anime.generos.join(', ') %></p>
+        <div class="d-inline-block" id="info-basica">
+          <h1 class="h2" id="anime-title"><%= anime.nomeIngles %> (<%= anime.lancamento %>)</h1>
+          <% if(anime.nomeIngles !== anime.nomeJapones) { %>
+            <h2 class="fst-italic h5" id="alternative-title"><%= anime.nomeJapones %> </h2>
+          <% } %>
+            <p class="info-title">Gêneros:</p>
+            <p id="anime-generos"><%= anime.generos.join(', ') %></p>
 
-        <div class="d-none d-lg-block ">
-          <%= anime.sinopse %>
-        </div>
-        <!-- Colapse -->
-        <p>
-          <a class="text-white text-decoration-none d-lg-none" id="sinopse-collapse" data-bs-toggle="collapse" href="#sinopse" role="button" aria-expanded="false" aria-controls="sinopse">
-            Sinopse
-          </a>
-        </p>
-        <div class="collapse"  id="sinopse">
-          <div class=""><%= anime.sinopse %></div>
+            <p class="info-title">Sinopse:</p>
+            <div class="sinopse-content">
+              <p><%= anime.sinopseprev %><span id="dots">...</span><span id="more" style="display: none"><%= anime.sinopsemore %></span></p>
+              <button onclick="myFunction()" id="myBtn">Veja Mais</button>
+            </div>
         </div>
       </div>
-    </div>
+
     
   </main>
 
-  <!-- <%- include('./partials/footer') %>  -->
+  <%- include('./partials/footer') %>
   <%- include('./partials/scripts') %> 
 </body>
 </html>

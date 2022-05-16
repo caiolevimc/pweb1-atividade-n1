@@ -4,6 +4,7 @@
 <%- include('./partials/head') %>
 
 <body>
+  <%- include('./partials/background') %> 
   <%- include('./partials/header')  %> 
 
   <main>
@@ -12,69 +13,71 @@
     <div class="carousel slide" data-bs-ride="carousel" id="carousel-2" style="height: 600px;max-height: 500px;">
       <div class="carousel-inner h-100">
           <div class="carousel-item active h-100">
-              <div class="overlay w-100 d-block position-absolute h-100 fit-cover" style="background: linear-gradient(90deg, rgba(42,98,128,1) 0%, rgba(42,98,128,0) 100%);">
-                  <img class="w-100 d-block position-absolute h-100 fit-cover" src="../images/banners/ousama-ranking.jpg" alt="Slide Image" style="z-index: -10;">
-              </div>
-              <div class="container d-flex flex-column justify-content-center h-100">
-                  <div class="row" style="z-index: 1;">
-                      <div class="col-md-6 col-xl-4 offset-md-2" style="max-width: auto;">
-                          <img class="img-fluid" src="../images/logos/ousama-ranking.png" style="max-width: 100%; height: auto;max-height:250px;">
-                          <ul class="list-inline text-light my-1">
-                              <li class="list-inline-item">2022</li>
-                              <li class="list-inline-item">Ação/Aventura</li>
-                              <li class="list-inline-item">Fantasia</li>
-                          </ul>
-                          <div style="max-width: 350px;">
-                              <p class="text-light">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
-                          </div>
-                          <div>
-                              <a class="button-actions btn btn-primary border mr-2 p-1" aria-pressed="false" href="#"><i class="fa fa-play mx-1" aria-hidden="true"></i>Assistir</a>
-                              <a class="button-actions btn btn-primary mr-2 p-1" aria-pressed="false" href="#"><i class="fa fa-plus mx-1" aria-hidden="true"></i>Adicionar à lista</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+                <a href="/anime/ousama-ranking">
+                <div class="overlay w-100 d-block position-absolute h-100 fit-cover" style="background: linear-gradient(90deg, rgba(42,98,128,1) 0%, rgba(42,98,128,0) 100%);">
+                    <img class="w-100 d-block position-absolute h-100 fit-cover" src="../images/banners/ousama-ranking.jpg" alt="Slide Image" style="z-index: -10;">
+                </div>
+                <div class="container d-flex flex-column justify-content-center h-100 dados-slider">
+                    <div class="row" style="z-index: 1;">
+                        <div class="col-md-6 col-xl-4 offset-md-2" style="max-width: auto;">
+                            <img class="img-fluid" src="../images/logos/ousama-ranking.png" style="max-width: 100%; height: auto;max-height:250px;">
+                            <ul class="list-inline text-light my-1">
+                                <li class="list-inline-item">2022</li>
+                                <li class="list-inline-item">Ação/Aventura</li>
+                                <li class="list-inline-item">Fantasia</li>
+                            </ul>
+                            <div style="max-width: 350px;">
+                                <p class="text-light">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
           </div>
           <div class="carousel-item h-100">
-              <div class="overlay w-100 d-block position-absolute h-100 fit-cover" style="background: linear-gradient(90deg, rgba(42,98,128,1) 0%, rgba(42,98,128,0) 100%);">
-                  <img class="w-100 d-block position-absolute h-100 fit-cover" src="../images/banners/86-eighty-six.jpg" alt="Slide Image" style="z-index: -10;">
-              </div>
-              <div class="container d-flex flex-column justify-content-center h-100">
-                  <div class="row" style="z-index: 1;">
-                      <div class="col-md-6 col-xl-4 offset-md-2" style="max-width: auto;">
-                          <img class="img-fluid" src="../images/logos/86-eighty-six.png" style="max-width: 100%; height: auto;max-height:250px;">
-                          <ul class="list-inline text-light my-1">
-                              <li class="list-inline-item">2022</li>
-                              <li class="list-inline-item">Ação/Aventura</li>
-                              <li class="list-inline-item">Fantasia</li>
-                          </ul>
-                          <div style="max-width: 350px;">
-                              <p class="text-light">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+                <a href="/anime/86-eighty-six">
+                <div class="overlay w-100 d-block position-absolute h-100 fit-cover" style="background: linear-gradient(90deg, rgba(42,98,128,1) 0%, rgba(42,98,128,0) 100%);">
+                    <img class="w-100 d-block position-absolute h-100 fit-cover" src="../images/banners/86-eighty-six.jpg" alt="Slide Image" style="z-index: -10;">
+                </div>
+                <div class="container d-flex flex-column justify-content-center h-100 dados-slider">
+                    <div class="row" style="z-index: 1;">
+                        <div class="col-md-6 col-xl-4 offset-md-2" style="max-width: auto;">
+                            <img class="img-fluid" src="../images/logos/86-eighty-six.png" style="max-width: 100%; height: auto;max-height:250px;">
+                            <ul class="list-inline text-light my-1">
+                                <li class="list-inline-item">2022</li>
+                                <li class="list-inline-item">Ação/Aventura</li>
+                                <li class="list-inline-item">Fantasia</li>
+                            </ul>
+                            <div style="max-width: 350px;">
+                                <p class="text-light">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
           </div>
           <div class="carousel-item h-100">
-              <div class="overlay w-100 d-block position-absolute h-100 fit-cover" style="background: linear-gradient(90deg, rgba(42,98,128,1) 0%, rgba(42,98,128,0) 100%);">
-                  <img class="w-100 d-block position-absolute h-100 fit-cover" src="../images/banners/arifureta-shokugyou-de-sekai-saikyou.jpg" alt="Slide Image" style="z-index: -10;">
-              </div>
-              <div class="container d-flex flex-column justify-content-center h-100">
-                  <div class="row" style="z-index: 1;">
-                      <div class="col-md-6 col-xl-4 offset-md-2" style="max-width: auto;">
-                          <img class="img-fluid" src="../images/logos/arifureta-shokugyou-de-sekai-saikyou.png" style="max-width: 100%; height: auto; max-height:250px;">
-                          <ul class="list-inline text-light my-1">
-                              <li class="list-inline-item">2022</li>
-                              <li class="list-inline-item">Ação/Aventura</li>
-                              <li class="list-inline-item">Fantasia</li>
-                          </ul>
-                          <div style="max-width: 350px;">
-                              <p class="text-light">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+            <a href="/anime/arifureta-shokugyou-de-sekai-saikyou">
+            <div class="overlay w-100 d-block position-absolute h-100 fit-cover" style="background: linear-gradient(90deg, rgba(42,98,128,1) 0%, rgba(42,98,128,0) 100%);">
+                <img class="w-100 d-block position-absolute h-100 fit-cover" src="../images/banners/arifureta-shokugyou-de-sekai-saikyou.jpg" alt="Slide Image" style="z-index: -10;">
+            </div>
+            <div class="container d-flex flex-column justify-content-center h-100 dados-slider">
+                <div class="row" style="z-index: 1;">
+                    <div class="col-md-6 col-xl-4 offset-md-2" style="max-width: auto;">
+                        <img class="img-fluid" src="../images/logos/arifureta-shokugyou-de-sekai-saikyou.png" style="max-width: 100%; height: auto; max-height:250px;">
+                        <ul class="list-inline text-light my-1">
+                            <li class="list-inline-item">2022</li>
+                            <li class="list-inline-item">Ação/Aventura</li>
+                            <li class="list-inline-item">Fantasia</li>
+                        </ul>
+                        <div style="max-width: 350px;">
+                            <p class="text-light">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+      </div>
       </div>
       <div>
           <a class="carousel-control-prev" href="#carousel-2" role="button" data-bs-slide="prev">

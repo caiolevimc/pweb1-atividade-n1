@@ -16,6 +16,20 @@
 
 body{
   background-color: var(--lapis-lazuli);
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container{
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.fit-cover {
+  object-fit: cover;
 }
 
 .bg-blue1{
@@ -38,6 +52,7 @@ body{
 	-ms-transform: scale(1.1); /* IE 9 */
   -webkit-transform: scale(1.1); /* Safari 3-8 */
   transform: scale(1.03);
+  border: 3px solid white;
 }
 
 .navbar-options .navbar-collapse {
@@ -46,4 +61,60 @@ body{
 
 .navbar>.container-fluid{
   justify-content: space-around;
+}
+
+.btn-floating{
+    width: 2.3125rem;
+    height: 2.3125rem;
+    border-radius: 50%;
+    padding: 0;
+    position: relative;
+}
+
+.btn-floating i:hover{
+  color: #212529;
+}
+
+.btn-floating i{
+    width: 2.0625rem;
+    line-height: 2.0625rem;
+}
+
+@media (max-width: 1200px) { 
+  #content{
+    width: 85%!important;
+  }
+}
+@media (max-width: 991.98px){
+  #content{
+    width: 100%!important;
+  }
+}
+
+@media (max-width: 768px){
+  .dados-slider{
+    display: none!important;
+  }
+}
+
+@media (min-width: 768px){
+  .container{
+    max-width: 100vw!important;
+  }
+}
+
+@media (min-width: 576px){
+  .container{
+    max-width: 100vw!important;
+  }
+}
+
+.btn-light{
+  border: none;
+}
+
+.type-buttons:hover{
+  background: rgba(33,37,41,1);
+  color: white;
+  border: none;
 }
