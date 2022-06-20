@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('./partials/head') %>
+
+<body>
+    <%- include('./partials/background') %> 
+    <%- include('./partials/header')  %>
+
+    <div class="w-75 mx-auto px-5 pb-5" id="content">
+        <% if (message) { %>
+            <div class="alert <%= messageClass %>" role="alert">
+                <%= message %>
+            </div>
+        <% } %>
+
+        <form action="/login" method="POST">
+            <div class="mb-3">
+                <label for="emailInput" class="form-label">Email address</label>
+                <input name="email" type="email" class="form-control" id="emailInput" aria-describedby="emailInput">
+            </div>
+            <div class="mb-3">
+                <label for="passwordInput" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="passwordInput">
+            </div>
+            <button type="submit" class="btn btn-light">Submit</button>
+        </form>
+    </div>
+
+    <%- include('./partials/footer') %> 
+    <%- include('./partials/scripts') %> 
+</body>

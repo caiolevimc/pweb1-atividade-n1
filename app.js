@@ -1,15 +1,18 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var explorarRouter = require('./routes/explorar')
-var calendarioRouter = require('./routes/calendario')
-var animePageRouter = require('./routes/anime-page');
+const indexRouter = require('./routes/index');
+const explorarRouter = require('./routes/explorar')
+const calendarioRouter = require('./routes/calendario')
+const animePageRouter = require('./routes/anime-page');
+const loginRouter = require('./routes/login').router
+const registerRouter = require('./routes/register')
 
-var app = express();
+
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,6 +28,8 @@ app.use('/', indexRouter);
 app.use('/explorar', explorarRouter);
 app.use('/calendario', calendarioRouter);
 app.use('/anime', animePageRouter);
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
 
 
 // catch 404 and forward to error handler

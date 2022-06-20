@@ -9,12 +9,18 @@
   <main class="">
 
     <div class="w-75 mx-auto px-5 pb-5" style="background-color: rgba(0,0,0,.8);" id="content">
-
+      
+      <!-- Barra de Pesquisa -->
       <div class="input-group pt-5 mb-5 border-bottom border-2 pb-2">
         <div class="input-group-prepend ps-1 ps-md-2 ps-lg-3">
           <span class="input-group-text bg-transparent border-0 text-white fs-3" id="basic-addon1"><i class="bi bi-search"></i></span>
         </div>
-        <input type="search" class="form-control bg-transparent border-0 text-white fs-3" placeholder="Search Animes" aria-label="Username" aria-describedby="basic-addon1">
+        <input id="search" type="search" class="form-control bg-transparent border-0 text-white fs-3" placeholder="Search Animes" aria-label="Username" aria-describedby="basic-addon1" list="animes-list">
+        <datalist id="animes-list">
+          <% for( anime of animes ) { %>
+            <option value="<%= anime.nomeJapones %>"></option>
+          <% } %>
+        </datalist>
       </div>
 
       <!-- Generos Grid -->
@@ -32,7 +38,7 @@
           <h2 class="display-4 my-5">Desculpe, nenhum anime encontrado</h2>
         <% } else { %>
           <% for(anime of animes) { %> 
-            <div class="col w-auto h-auto p-0 mx-1 mb-3" style="height: 350; max-width: 200px;">
+            <div id="<%= anime.url %>" class="col w-auto h-auto p-0 mx-1 mb-3" style="height: 350; max-width: 200px;">
                 <a class="text-decoration-none" href="/anime/<%= anime.url %> ">
                     <img class="anime-card" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeIngles %> Capa" style="width: 200px; height: 295px; border-radius: 8px; margin: 3px;
                     transition: transform 0.98s; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
@@ -45,6 +51,6 @@
   </main>
 
   <%- include('./partials/footer') %> 
-  <%- include('./partials/scripts') %> 
+  <%- include('./partials/scripts') %>
 </body>
 </html>

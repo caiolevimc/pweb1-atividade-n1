@@ -1,10 +1,12 @@
 var express = require('express');
+const authTokens = require('./login').authTokens
 var router = express.Router();
+
+const page = 'anime-page'
 
 const {MongoClient} = require('mongodb')
 const uri = "mongodb+srv://db_user:batatadoce@cluster0.cekxy.mongodb.net/?retryWrites=true&w=majority"
 const client = new MongoClient(uri)
-const page = 'anime-page'
 
 /* GET home page. */
 router.get('/', function(req, res, next){
@@ -12,15 +14,14 @@ router.get('/', function(req, res, next){
   next()
 })
 router.get('/:animeUrl', function(req, res, next) { 
-  findAnimeByUrl(client, req.params['animeUrl']).then(anime => {
-    res.render('anime-page', { 
-      page: page, 
-      anime: anime
-    });
-  })
+    findAnimeByUrl(client, req.params['animeUrl']).then(anime => {
+        res.render('anime-page', { 
+            page: page, 
+            anime: anime,
+            authTokens: authTokens
+        }); 
+    })
 });
-
-module.exports = router;
 
 async function findAnimeByUrl(client, animeUrl){
   try {
@@ -31,3 +32,8 @@ async function findAnimeByUrl(client, animeUrl){
     client.close()
   }
 }
+
+
+
+module.exports = router;
+
