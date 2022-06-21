@@ -11,7 +11,12 @@ const client = new MongoClient(uri)
 const authTokens = {}
 
 router.get('/', (req, res, next) => {
-    res.render('login', { page: page, message: '', messageClass: '' })
+    if(isLogged(req)){
+        res.render('login', { page: page, message: 'User already logged', messageClass: 'alert-danger', user: true })
+    } else {
+        res.render('login', { page: page, message: '', messageClass: '', user: false })
+    }
+    
 })
 
 router.post('/', (req, res, next) => {
@@ -21,15 +26,17 @@ router.post('/', (req, res, next) => {
     verifyLogin(client, email, hashedPassword).then(user => {
         if (user) {          
             const authToken = generateAuthToken();
-    
+            console.log(`AuthToken: ${authToken}`)
             // Store authentication token
             authTokens[authToken] = user;
+            console.log(`AuthTokens: ${authTokens}`)
     
             // Setting the auth token in cookies
             res.cookie('AuthToken', authToken);
+            console.log(`Adicionado aos cookies: ${authToken}`)
     
             // Redirect user to the protected page
-            res.redirect('/protected');
+            res.redirect('/');
         } else {
             res.render('login', {
                 message: 'Invalid username or password',
@@ -37,6 +44,12 @@ router.post('/', (req, res, next) => {
             });
         }
     })
+})
+
+router.use((req, res, next) => {
+    const authToken = req.cookies['AuthToken'];
+    req.user = authTokens[authToken]
+    next()
 })
 
 async function verifyLogin(client, email, password){

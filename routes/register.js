@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const crypto = require('crypto')
+const authTokens = require('./login').authTokens
+
 
 const page = 'register'
 
@@ -61,8 +63,7 @@ async function registerUser(client, username, email, password){
         await client.db('pweb1').collection('users').insertOne({
             username, 
             email, 
-            password: getHashedPassword(password), 
-            animeList: []
+            password: getHashedPassword(password),
         })
     } finally {
         await client.close()
@@ -73,6 +74,11 @@ const getHashedPassword = (password) => {
     const sha256 = crypto.createHash('sha256');
     const hash = sha256.update(password).digest('base64');
     return hash;
+}
+
+function isLogged(req){
+    const authToken = req.cookies['AuthToken'];
+    return authTokens[authToken] ? true : false
 }
 
 module.exports = router;

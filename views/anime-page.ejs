@@ -4,10 +4,10 @@
 <%- include('./partials/head') %>
 
 <body class="">
-  <div id="background">
-    <img class="vw-100 d-block position-fixed vh-100 fit-cover" src="../images/banners/<%= anime.url %>.jpg" alt="background" style="filter: blur(5px); z-index: -100;">
-  </div>
-  <%- include('./partials/header')  %> 
+    <div id="background">
+        <img class="vw-100 d-block position-fixed vh-100 fit-cover" src="../images/banners/<%= anime.url %>.jpg" alt="background" style="filter: blur(5px); z-index: -100;">
+    </div>
+    <%- include('./partials/header')  %> 
 
     <main class="vw-100">
       <!-- Animes Page -->
@@ -32,11 +32,6 @@
                       <p><%= anime.sinopseprev %><span id="dots">...</span><span id="more" style="display: none"><%= anime.sinopsemore %></span></p>
                       <button onclick="myFunction()" id="myBtn">Veja Mais</button>
                   </div>
-                  <%if(authTokens){ %>
-                      
-                        <% if(){ %>
-                        <% } %>
-                  <% } %>
             </div>
         </div>
 

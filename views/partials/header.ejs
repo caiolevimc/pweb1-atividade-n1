@@ -11,6 +11,14 @@
                     <li class="nav-item"><a class="nav-link <% if (page === 'index') { %> active <% } %>" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link <% if (page === 'explorar') { %> active <% } %>" href="/explorar">Explorar</a></li>
                     <li class="nav-item"><a class="nav-link <% if (page === 'calendario') { %> active <% } %>" href="/calendario">Calendário</a></li>
+                    <!-- Mecanismo de Login -->
+                    <li class="nav-item">
+                        <% if(user){ %>
+                            <a class="nav-link" href="#">Já Loggado</a>
+                        <% } else { %>
+                            <a class="nav-link" href="/login">Login</a>
+                        <% } %>
+                    </li>
                 </ul>
             </div>
         </div>
