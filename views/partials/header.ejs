@@ -14,7 +14,7 @@
                     <!-- Mecanismo de Login -->
                     <li class="nav-item">
                         <% if(user){ %>
-                            <a class="nav-link" href="#">Já Loggado</a>
+                            <a class="nav-link" href="#"><%= user.username %></a>
                         <% } else { %>
                             <a class="nav-link" href="/login">Login</a>
                         <% } %>

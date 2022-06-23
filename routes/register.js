@@ -11,7 +11,16 @@ const uri = "mongodb+srv://db_user:batatadoce@cluster0.cekxy.mongodb.net/?retryW
 const client = new MongoClient(uri)
 
 router.get('/', (req, res, next) => {
-    res.render('register', { page: page, message: '', messageClass: '' })
+    if(isLogged(req)){
+        res.redirect('/')
+    } else {
+        res.render('register', {
+            page: page,
+            message: '',
+            messageClass: '',
+            user: false
+        })
+    }
 })
 
 router.post('/', (req, res, next) => {
@@ -26,7 +35,8 @@ router.post('/', (req, res, next) => {
                 res.render('login', {
                     page: 'login',
                     message: 'Registration Complete. Please login to continue.',
-                    messageClass: 'alert-success'
+                    messageClass: 'alert-success',
+                    user: false
                 });
                 
             } else {
@@ -34,7 +44,8 @@ router.post('/', (req, res, next) => {
                 res.render('register', {
                     page: page,
                     message: 'User already registered.',
-                    messageClass: 'alert-danger'
+                    messageClass: 'alert-danger',
+                    user: false
                 })
             }
         })
@@ -42,7 +53,8 @@ router.post('/', (req, res, next) => {
         res.render('register', {
             page: page,
             message: "The password doesn't match",
-            messageClass: 'alert-danger'
+            messageClass: 'alert-danger',
+            user: false
         })
     }
 })
@@ -74,6 +86,12 @@ const getHashedPassword = (password) => {
     const sha256 = crypto.createHash('sha256');
     const hash = sha256.update(password).digest('base64');
     return hash;
+}
+
+function getLoggedUser(req){
+    const authToken = req.cookies['AuthToken']
+    const user = authTokens[authToken]
+    return user
 }
 
 function isLogged(req){

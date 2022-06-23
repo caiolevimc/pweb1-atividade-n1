@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
             res.render('index', {
                 page: page,
                 animes: animes,
-                user: true
+                user: getLoggedUser(req)
             })
         } else {
             res.render('index', {
@@ -37,6 +37,12 @@ async function getAnimes(client){
   const animes = await client.db('pweb1').collection('animes').find({}).sort({nomeJapones: 1})
   const result = await animes.toArray()
   return result
+}
+
+function getLoggedUser(req){
+    const authToken = req.cookies['AuthToken']
+    const user = authTokens[authToken]
+    return user
 }
 
 function isLogged(req){

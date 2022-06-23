@@ -17,7 +17,7 @@ router.get('/', function(req, res, next) {
         page: page,
         dias: dias,
         animes: animes,
-        user: true
+        user: getLoggedUser(req)
       })
     } else {
       res.render('calendario', {
@@ -27,17 +27,26 @@ router.get('/', function(req, res, next) {
         user: false
       })
     }
-    next()
   })
 });
 
 router.get('/:diaUrl', function(req, res, next){
     findAnimesByDiaAndDias(client, req.params['diaUrl']).then(({animesDoDia, dias}) => {
-        res.render('calendario', {
-            page: page,
-            dias: dias,
-            animes: animesDoDia     
-        })
+        if(isLogged(req)){
+            res.render('calendario', {
+                page: page,
+                dias: dias,
+                animes: animesDoDia,
+                user: getLoggedUser(req)
+            })
+        } else {
+            res.render('calendario', {
+                page: page,
+                dias: dias,
+                animes: animesDoDia,
+                user: false  
+            })
+        }
     })
 });
 
@@ -85,6 +94,12 @@ async function findAnimesByDia(client, dia){
     const animesDoDia = client.db('pweb1').collection('animes').find({weekaired: dia.nome}).sort({nomeJapones: 1})
     const result = await animesDoDia.toArray()
     return result
+}
+
+function getLoggedUser(req){
+    const authToken = req.cookies['AuthToken']
+    const user = authTokens[authToken]
+    return user
 }
 
 function isLogged(req){

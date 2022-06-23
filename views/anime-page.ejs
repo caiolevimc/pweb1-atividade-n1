@@ -13,25 +13,34 @@
       <!-- Animes Page -->
 
 
-      <div class="w-75 mx-auto px-5" style="background-color: rgba(0,0,0,.8);">
+    <div class="w-75 mx-auto px-5" style="background-color: rgba(0,0,0,.8);">
 
-          <div class="row row-cols-sm-1 row-cols-md-2 justify-content-center py-5" style="z-index: 1;" style=" margin: 0;background-color: rgba(0,0,0,0.5)!important;">
+        <div class="row row-cols-sm-1 row-cols-md-2 justify-content-center py-5" style="z-index: 1;" style=" margin: 0;background-color: rgba(0,0,0,0.5)!important;">
 
-              <img class="d-inline-block" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeIngles %> Capa" style="max-width: 300px; height: 442.5px;">
+            <img class="d-inline-block" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeIngles %> Capa" style="max-width: 300px; height: 442.5px;">
 
-              <div class="d-inline-block" id="info-basica">
-                  <h1 class="h2" id="anime-title"><%= anime.nomeIngles %> (<%= anime.lancamento %>)</h1>
-                  <% if(anime.nomeIngles !== anime.nomeJapones) { %>
+            <div class="d-inline-block" id="info-basica">
+                <h1 class="h2" id="anime-title"><%= anime.nomeIngles %> (<%= anime.lancamento %>)</h1>
+                <% if(anime.nomeIngles !== anime.nomeJapones) { %>
                     <h2 class="fst-italic h5" id="alternative-title"><%= anime.nomeJapones %> </h2>
-                  <% } %>
+                <% } %>
                     <p class="info-title">Gêneros:</p>
                     <p id="anime-generos"><%= anime.generos.join(', ') %></p>
 
                     <p class="info-title">Sinopse:</p>
-                  <div class="sinopse-content">
-                      <p><%= anime.sinopseprev %><span id="dots">...</span><span id="more" style="display: none"><%= anime.sinopsemore %></span></p>
-                      <button onclick="myFunction()" id="myBtn">Veja Mais</button>
-                  </div>
+                <div class="sinopse-content">
+                    <p><%= anime.sinopseprev %><span id="dots">...</span><span id="more" style="display: none"><%= anime.sinopsemore %></span></p>
+                    <button onclick="myFunction()" id="myBtn">Veja Mais</button>
+                </div>
+                    <% if(user) { %>
+                        <% if(isOnAnimeList){ %> 
+                            <a class="btn btn-light" href="/anime/<%= anime.url %>/remove-anime">Remover da Lista</a> 
+                        <% } else { %>
+                            <a class="btn btn-light" href="/anime/<%= anime.url %>/add-anime">Adicionar a Lista</a>
+                        <% } %>
+                    <% } else { %>
+                        <a class="btn btn-light" href="/login">Fazer Login</a>
+                    <% } %>
             </div>
         </div>
 

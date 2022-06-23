@@ -16,7 +16,7 @@ router.get('/', function(req, res, next){
                 page: page,
                 animes: animes,
                 generos: generos,
-                user: true
+                user: getLoggedUser(req)
             })
         } else {
             res.render('explorar', {
@@ -36,7 +36,7 @@ router.get('/:generoUrl', function(req, res, next){
                 page: page,
                 generos: generos,
                 animes: animesGenero,
-                user: true
+                user: getLoggedUser(req)
             })
         } else {
             res.render('explorar', {
@@ -94,6 +94,12 @@ async function findAnimesByGenero(client, genero){
     const animesGenero = client.db('pweb1').collection('animes').find({generos: genero.nome}).sort({nomeJapones: 1})
     const result = await animesGenero.toArray()
     return result
+}
+
+function getLoggedUser(req){
+    const authToken = req.cookies['AuthToken']
+    const user = authTokens[authToken]
+    return user
 }
 
 function isLogged(req){

@@ -12,7 +12,7 @@ const authTokens = {}
 
 router.get('/', (req, res, next) => {
     if(isLogged(req)){
-        res.render('login', { page: page, message: 'User already logged', messageClass: 'alert-danger', user: true })
+        res.redirect('/')
     } else {
         res.render('login', { page: page, message: '', messageClass: '', user: false })
     }
@@ -35,12 +35,13 @@ router.post('/', (req, res, next) => {
             res.cookie('AuthToken', authToken);
             console.log(`Adicionado aos cookies: ${authToken}`)
     
-            // Redirect user to the protected page
-            res.redirect('/');
+            res.redirect('back').end();
         } else {
             res.render('login', {
+                page,
                 message: 'Invalid username or password',
-                messageClass: 'alert-danger'
+                messageClass: 'alert-danger',
+                user: false
             });
         }
     })
@@ -73,6 +74,12 @@ const getHashedPassword = (password) => {
 
 const generateAuthToken = () => {
     return crypto.randomBytes(30).toString('hex');
+}
+
+function getLoggedUser(req){
+    const authToken = req.cookies['AuthToken']
+    const user = authTokens[authToken]
+    return user
 }
 
 function isLogged(req){
