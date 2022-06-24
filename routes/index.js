@@ -8,35 +8,58 @@ const client = new MongoClient(uri)
 
 const page = 'index'
 
-router.use((req, res, next) => {
-    const authToken = req.cookies['AuthToken'];
-    req.user = authTokens[authToken]
-    next()
-})
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
     getAnimes(client).then(animes => {
         if(isLogged(req)){
-            res.render('index', {
-                page: page,
-                animes: animes,
-                user: getLoggedUser(req)
+            const user = getLoggedUser(req)
+            getAnimeList(client, user).then(animeList => {
+                res.render('index', {
+                    page,
+                    animes,
+                    user,
+                    animeList
+                })
             })
         } else {
             res.render('index', {
-                page: page,
-                animes: animes,
-                user: false
+                page,
+                animes,
+                user: false,
+                animeList: []
             })
         }
     })
 });
 
+async function getAnimeList(client, user){
+    try {
+        await client.connect()
+        const animesId = await getAnimesListId(client, user)
+        const animeList = await client.db('pweb1').collection('animes').find({
+            _id: { $in: animesId }
+        }).toArray()
+        return await animeList
+    } finally {
+        client.close()
+    }
+}
+
+async function getAnimesListId(client, user){
+    const userAnimes = await client.db('pweb1').collection('user-anime').find({userId: user._id}).toArray()
+    const animesId = await userAnimes.map(userAnime => userAnime.animeId)
+    return await animesId
+}
+
 async function getAnimes(client){
-  const animes = await client.db('pweb1').collection('animes').find({}).sort({nomeJapones: 1})
-  const result = await animes.toArray()
-  return result
+    try {
+        await client.connect()
+        const animes = await client.db('pweb1').collection('animes').find({}).sort({nomeJapones: 1})
+        const result = await animes.toArray()
+        return result
+    } finally {
+        client.close()
+    }
 }
 
 function getLoggedUser(req){

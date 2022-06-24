@@ -35,11 +35,11 @@ router.post('/', (req, res, next) => {
             res.cookie('AuthToken', authToken);
             console.log(`Adicionado aos cookies: ${authToken}`)
     
-            res.redirect('back').end();
+            res.redirect('/');
         } else {
             res.render('login', {
                 page,
-                message: 'Invalid username or password',
+                message: 'Invalid email or password',
                 messageClass: 'alert-danger',
                 user: false
             });

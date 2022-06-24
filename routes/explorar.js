@@ -26,7 +26,6 @@ router.get('/', function(req, res, next){
                 user: false
             })
         }
-        next()
     })
 })
 router.get('/:generoUrl', function(req, res, next){
