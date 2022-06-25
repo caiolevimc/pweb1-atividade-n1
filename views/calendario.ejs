@@ -20,10 +20,16 @@
 
             <!-- Dias Grid -->
             <div class="mx-auto justify-content-center row row-cols-2 row-cols-sm-2 row-cols-md-auto row-cols-lg-8 my-5" id="generos">
-                <a class="type-buttons btn btn-light m-1" href="/calendario">Todos</a>
+                <!-- <a class="type-buttons btn btn-light m-1" href="/calendario">Todos</a> -->
+                <div class="form-check">
+                    <input name="dia-filter" type="radio" class="btn-check dia-checkbox" id="todos" autocomplete="off" value="Todos" checked>
+                    <label class="btn btn-outline-light" for="todos">Todos</label>
                 <% for( dia of dias ) { %>
-                <a class="type-buttons btn btn-light m-1" href="/calendario/<%= dia.url %>"><%= dia.nome %></a>
+                    <!-- <a class="type-buttons btn btn-light m-1" href="/calendario/<%= dia.url %>"><%= dia.nome %></a> -->
+                    <input name="dia-filter" type="radio" class="btn-check dia-checkbox" id="<%= dia.url %>" autocomplete="off" value="<%= dia.nome %>">
+                    <label class="btn btn-outline-light" for="<%= dia.url %>"><%= dia.nome %> </label>
                 <% } %>
+                </div>
             </div>
 
 
@@ -33,7 +39,7 @@
                 <h2 class="display-4 my-5">Desculpe, nenhum anime encontrado</h2>
                 <% } else { %>
                 <% for(anime of animes) { %> 
-                    <div id="<%= anime.url %>" class="col w-auto h-auto p-0 mx-1 mb-3 anime-box" style="height: 350; max-width: 200px;">
+                    <div id="<%= anime.url %>" class="col w-auto h-auto p-0 mx-1 mb-3 anime-box" style="height: 350; max-width: 200px;" data-nome-ingles="<%= anime.nomeIngles %>" data-nome-japones="<%= anime.nomeJapones %>" data-dia="<%= anime.weekaired %>">
                         <a class="text-decoration-none" href="/anime/<%= anime.url %> ">
                             <img class="anime-card" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeIngles %> Capa" style="width: 200px; height: 295px; border-radius: 8px; margin: 3px;
                             transition: transform 0.98s; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
@@ -48,6 +54,6 @@
     <%- include('./partials/footer') %> 
     <%- include('./partials/scripts') %> 
 
-    <script src="../javascripts/search-engine.js"></script>
+    <script src="../javascripts/calendario-search-engine.js"></script>
 </body>
 </html>
