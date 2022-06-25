@@ -79,6 +79,17 @@ body{
     width: 2.0625rem;
     line-height: 2.0625rem;
 }
+.perfil-dropdown{
+  box-shadow: 3px -3px 10px black;
+}
+
+.perfil-dropdown .perfil-dropdown-item:hover{
+  background: #131517;
+}
+
+.logout-icon{
+  margin-right: 5px;
+}
 
 @media (max-width: 1200px) { 
   #content{

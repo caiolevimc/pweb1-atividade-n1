@@ -8,7 +8,9 @@ const indexRouter = require('./routes/index');
 const explorarRouter = require('./routes/explorar')
 const calendarioRouter = require('./routes/calendario')
 const animePageRouter = require('./routes/anime-page');
+const animeListRouter = require('./routes/anime-list');
 const loginRouter = require('./routes/login').router
+const logoutRouter = require('./routes/logout')
 const registerRouter = require('./routes/register')
 
 
@@ -28,7 +30,9 @@ app.use('/', indexRouter);
 app.use('/explorar', explorarRouter);
 app.use('/calendario', calendarioRouter);
 app.use('/anime', animePageRouter);
+app.use('/anime-list', animeListRouter);
 app.use('/login', loginRouter);
+app.use('/logout', logoutRouter)
 app.use('/register', registerRouter);
 
 

@@ -12,9 +12,16 @@
                     <li class="nav-item"><a class="nav-link <% if (page === 'explorar') { %> active <% } %>" href="/explorar">Explorar</a></li>
                     <li class="nav-item"><a class="nav-link <% if (page === 'calendario') { %> active <% } %>" href="/calendario">Calendário</a></li>
                     <!-- Mecanismo de Login -->
-                    <li class="nav-item">
+                    <li class="nav-item dropdown">
                         <% if(user){ %>
-                            <a class="nav-link" href="#"><%= user.username %></a>
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
+                                <%= user.username %>
+                            </a>
+                            <div class="perfil-dropdown dropdown-menu bg-dark">
+                                <a class="perfil-dropdown-item dropdown-item text-light" href="/anime-list">Lista de Animes</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="perfil-dropdown-item dropdown-item text-warning" href="/logout"><i class="logout-icon fa-solid fa-arrow-right-from-bracket"></i>Log out</a>
+                              </div>
                         <% } else { %>
                             <a class="nav-link" href="/login">Login</a>
                         <% } %>

@@ -97,14 +97,18 @@
         </div>
 
         <% if(user) { %>
-            <div class="content w-75 mx-auto px-5 pb-5">
+            <div class="content w-75 mx-auto pb-5">
                 <div class="anime-list my-5">
-                    <div class="anime-list_title border-3 border-bottom">
-                        <h2>Sua Lista</h2>
+                    <div class="anime-list_title d-flex flex-row justify-content-sm-between py-2 border-3 border-bottom">
+                        <h2 class="my-auto">Sua Lista</h2>
+                        <a href="/anime-list" class="morelink my-auto">VER TUDO <i class="fa-solid fa-angle-right"></i></a>
                     </div>
                     <div class="anime-list-slider my-3">
                         <% for (anime of animeList){ %>
-                            <img class="anime-card" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeIngles %> Capa" style="width: 200px; height: 295px; border-radius: 8px; margin: 3px; transition: transform 0.98s; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                            <a class="text-decoration-none" href="/anime/<%= anime.url %> ">
+                                <img class="anime-card" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeIngles %> Capa" style="width: 200px; height: 295px; border-radius: 8px; margin: 3px;
+                                transition: transform 0.98s; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                            </a>
                         <% } %>
                     </div>
                 </div>
@@ -114,14 +118,6 @@
 
     <%- include('./partials/footer') %> 
     <%- include('./partials/scripts') %>
-    <script>
-        $('.anime-list-slider').slick({
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            autoplay: true,
-            autoplaySpeed: 2000,
-            infinite: true
-        });
-    </script>
+
 </body>
 </html>

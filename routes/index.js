@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
                     page,
                     animes,
                     user,
-                    animeList
+                    animeList: animeList.slice(0, 5)
                 })
             })
         } else {

@@ -7,31 +7,34 @@
     <%- include('./partials/background') %> 
     <%- include('./partials/header')  %>
 
-    <div class="w-75 mx-auto px-5 pb-5" id="content">
+    <div class="w-75 my-5 mx-auto px-5 py-5" style="background-color: rgba(0,0,0,.8);" id="content">
         <% if (message) { %>
             <div class="alert <%= messageClass %>" role="alert">
                 <%= message %>
             </div>
         <% } %>
 
-        <form action="/register" method="POST">
+        <h2 class="mb-4">Cadastre-se</h2>
+
+        <form class="d-flex flex-column" action="/register" method="POST">
             <div class="mb-3">
-                <label for="usernameInput" class="form-label">Username</label>
-                <input name="username" type="text" class="form-control" id="usernameInput">
+                <label for="usernameInput" class="form-label">Nome de Usuário</label>
+                <input name="username" type="text" class="form-control w-50" id="usernameInput">
             </div>
             <div class="mb-3">
-                <label for="emailInput" class="form-label">Email address</label>
-                <input name="email" type="email" class="form-control" id="emailInput" aria-describedby="emailInput">
+                <label for="emailInput" class="form-label">Email</label>
+                <input name="email" type="email" class="form-control w-50" id="emailInput" aria-describedby="emailInput">
             </div>
             <div class="mb-3">
-                <label for="passwordInput" class="form-label">Password</label>
-                <input name="password" type="password" class="form-control" id="passwordInput">
+                <label for="passwordInput" class="form-label">Senha</label>
+                <input name="password" type="password" class="form-control w-50" id="passwordInput">
             </div>
             <div class="mb-3">
-                <label for="confirmPasswordInput" class="form-label">Confirm Password</label>
-                <input name="confirmPassword" type="password" class="form-control" id="confirmPasswordInput">
+                <label for="confirmPasswordInput" class="form-label">Confirmar senha</label>
+                <input name="confirmPassword" type="password" class="form-control w-50" id="confirmPasswordInput">
             </div>
-            <button type="submit" class="btn btn-light">Register</button>
+            <a class="login-link" href="/login">Você já possue cadastro? Entrar</a>
+            <button type="submit" class="btn btn-secondary w-50 text-light my-3 py-2">Cadastrar</button>
         </form>
     </div>
 

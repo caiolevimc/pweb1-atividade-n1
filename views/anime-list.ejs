@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<%- include('./partials/head') %>
+
+<body class="">
+    <%- include('./partials/background') %> 
+    <%- include('./partials/header')  %>
+    <main class="">
+
+        <div class="w-75 mx-auto px-5 pb-5" style="background-color: rgba(0,0,0,.8);" id="content">
+            <h1 class="mb-5">Lista de Animes</h1>
+
+            <!-- Anime Grid -->
+            <div class="mx-auto justify-content-center row row-cols-1 row-cols-sm-2 row-cols-md-auto row-cols-lg-8 my-5" id="animes">
+                <% if (animes.length === 0) { %>
+                <h2 class="display-4 my-5">Você não adicionou nenhum anime.</h2>
+                <% } else { %>
+                    <% for(anime of animes) { %> 
+                        <div id="<%= anime.url %>" class="col w-auto h-auto p-0 mx-1 mb-3 anime-box" style="height: 350; max-width: 200px;" data-nome-ingles="<%= anime.nomeIngles %>" data-nome-japones="<%= anime.nomeJapones %>" data-generos="<%= anime.generos %>" data-is-visisble="true" data-is-query="true">
+                            <a class="text-decoration-none" href="/anime/<%= anime.url %> ">
+                                <img class="anime-card" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeIngles %> Capa" style="width: 200px; height: 295px; border-radius: 8px; margin: 3px;
+                                transition: transform 0.98s; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">
+                            </a>
+                        </div>     
+                    <% } %>
+                <% } %>
+            </div>
+        </div>   
+    </main>
+
+    <%- include('./partials/footer') %> 
+    <%- include('./partials/scripts') %>
+
+    <!-- <script src="../javascripts/generos-filter.js"></script> -->
+    <script src="../javascripts/search-engine.js"></script>
+</body>
+</html>

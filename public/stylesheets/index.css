@@ -5,3 +5,16 @@
 a{
     text-decoration: none;
 }
+
+.morelink{
+    color:white
+}
+
+.morelink:hover{
+    color: #3e92ccff;
+}
+
+.morelink:hover .fa-solid{
+    color: #3e92ccff;
+    fill: #3e92ccff;
+}

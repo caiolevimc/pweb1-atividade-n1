@@ -15,8 +15,7 @@ router.get('/', (req, res, next) => {
         res.redirect('/')
     } else {
         res.render('login', { page: page, message: '', messageClass: '', user: false })
-    }
-    
+    }    
 })
 
 router.post('/', (req, res, next) => {
@@ -34,8 +33,8 @@ router.post('/', (req, res, next) => {
             // Setting the auth token in cookies
             res.cookie('AuthToken', authToken);
             console.log(`Adicionado aos cookies: ${authToken}`)
-    
-            res.redirect('/');
+
+            res.redirect('/')
         } else {
             res.render('login', {
                 page,
