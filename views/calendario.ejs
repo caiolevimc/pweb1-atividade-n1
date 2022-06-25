@@ -39,7 +39,7 @@
                 <h2 class="display-4 my-5">Desculpe, nenhum anime encontrado</h2>
                 <% } else { %>
                 <% for(anime of animes) { %> 
-                    <div id="<%= anime.url %>" class="col w-auto h-auto p-0 mx-1 mb-3 anime-box" style="height: 350; max-width: 200px;" data-nome-ingles="<%= anime.nomeIngles %>" data-nome-japones="<%= anime.nomeJapones %>" data-dia="<%= anime.weekaired %>">
+                    <div id="<%= anime._id.toString() %>" class="col w-auto h-auto p-0 mx-1 mb-3 anime-box" style="height: 350; max-width: 200px;" data-nome-ingles="<%= anime.nomeIngles %>" data-nome-japones="<%= anime.nomeJapones %>" data-dia="<%= anime.weekaired %>">
                         <a class="text-decoration-none" href="/anime/<%= anime.url %> ">
                             <img class="anime-card" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeIngles %> Capa" style="width: 200px; height: 295px; border-radius: 8px; margin: 3px;
                             transition: transform 0.98s; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">

@@ -20,10 +20,17 @@
 
             <!-- Generos Grid -->
             <div class="mx-auto justify-content-center row row-cols-1 row-cols-sm-2 row-cols-md-auto row-cols-lg-8 my-5" id="generos">
-                <a class="type-buttons btn btn-light m-1" href="/explorar">Todos</a>
-                <% for( genero of generos ) { %>
-                <a class="type-buttons btn btn-light m-1" href="/explorar/<%= genero.url %>"><%= genero.nome %></a>
-                <% } %>
+                <div class="form-check">
+                    <!-- <a class="type-buttons btn btn-light m-1" href="/explorar">Todos</a> -->
+                    <input name="genero-filter" type="radio" class="btn-check genero-checkbox" id="todos" autocomplete="off" value="Todos" checked>
+                    <label class="btn btn-outline-light" for="todos">Todos</label>
+
+                    <% for( genero of generos ) { %>
+                        <!-- <a class="type-buttons btn btn-light m-1" href="/explorar/<%= genero.url %>"><%= genero.nome %></a> -->
+                        <input name="genero-filter" type="checkbox" class="btn-check genero-checkbox"  id="<%= genero.url %>" autocomplete="off" value="<%= genero.nome %>">
+                        <label class="btn btn-outline-light" for="<%= genero.url %>"><%= genero.nome %></label>
+                    <% } %>
+                </div>
             </div>
 
 
@@ -33,7 +40,7 @@
                 <h2 class="display-4 my-5">Desculpe, nenhum anime encontrado</h2>
                 <% } else { %>
                 <% for(anime of animes) { %> 
-                    <div id="<%= anime.url %>" class="col w-auto h-auto p-0 mx-1 mb-3 anime-box" style="height: 350; max-width: 200px;" data-nome-ingles="<%= anime.nomeIngles %>" data-nome-japones="<%= anime.nomeJapones %>" data-generos="<%= anime.generos %> ">
+                    <div id="<%= anime._id.toString() %>" class="col w-auto h-auto p-0 mx-1 mb-3 anime-box" style="height: 350; max-width: 200px;" data-nome-ingles="<%= anime.nomeIngles %>" data-nome-japones="<%= anime.nomeJapones %>" data-generos="<%= anime.generos %> ">
                         <a class="text-decoration-none" href="/anime/<%= anime.url %>">
                             <img class="anime-card" src="../images/capas/<%= anime.url %>.jpg" alt="<%= anime.nomeIngles %> Capa" style="width: 200px; height: 295px; border-radius: 8px; margin: 3px;
                             transition: transform 0.98s; box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);">

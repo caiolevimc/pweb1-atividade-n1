@@ -10,21 +10,17 @@ animeBoxs.forEach(animeBox => animes.push({
     nomeJapones: animeBox.dataset.nomeJapones,
     dia: animeBox.dataset.dia,
 }))
-console.log(animes)
 
-const activeAnimeBoxs = []
 let searchQuery = ""
 let diaFilter = "Todos"
 
 function pesquisar(event){
     searchQuery = event.target.value
-    console.log(searchQuery)
     selectAnimes()
 }
 
 function filtrar(){
     getCheckedDia()
-    //console.log(diaFilter)
     selectAnimes()
 }
 
@@ -52,7 +48,7 @@ function filterBySearch(){
                 anime.nomeIngles.toLowerCase().indexOf(simplifyText(searchQuery)) > -1 ||
                 anime.nomeJapones.toLowerCase().indexOf(searchQuery.toLowerCase) > -1 ||
                 anime.nomeJapones.toLowerCase().indexOf(simplifyText(searchQuery)) > -1
-})
+    })
 }
 
 function filterByDia(){
