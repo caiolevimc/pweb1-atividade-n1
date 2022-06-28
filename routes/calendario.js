@@ -11,25 +11,26 @@ const page = 'calendario'
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  getAnimesOnGoingAndDias(client).then(({animes, dias}) => {
-    if(isLogged(req)){
-      res.render('calendario', {
-        page: page,
-        dias: dias,
-        animes: animes,
-        user: getLoggedUser(req)
-      })
-    } else {
-      res.render('calendario', {
-        page: page,
-        dias: dias,
-        animes: animes,
-        user: false
-      })
-    }
-  })
+    getAnimesOnGoingAndDias(client).then(({animes, dias}) => {
+        if(isLogged(req)){
+            res.render('calendario', {
+                page: page,
+                dias: dias,
+                animes: animes,
+                user: getLoggedUser(req)
+            })
+        } else {
+            res.render('calendario', {
+                page: page,
+                dias: dias,
+                animes: animes,
+                user: false
+            })
+        }
+    })
 });
 
+/*
 router.get('/:diaUrl', function(req, res, next){
     findAnimesByDiaAndDias(client, req.params['diaUrl']).then(({animesDoDia, dias}) => {
         if(isLogged(req)){
@@ -50,17 +51,6 @@ router.get('/:diaUrl', function(req, res, next){
     })
 });
 
-async function getAnimesOnGoingAndDias(client){
-    try{
-        await client.connect()
-        const animes = await getAnimesOnGoing(client)
-        const dias = await getDias(client)
-        return {animes, dias}
-    } finally {
-        client.close()
-    }
-}
-
 async function findAnimesByDiaAndDias(client, diaUrl){
     try{
         await client.connect()
@@ -73,8 +63,33 @@ async function findAnimesByDiaAndDias(client, diaUrl){
     }
 }
 
+async function findDia(client, diaUrl){
+    const dia = await client.db('pweb1').collection('dias').findOne({url: diaUrl})
+    return dia
+}
+
+
+async function findAnimesByDia(client, dia){
+    const animesDoDia = client.db('pweb1').collection('animes').find({weekaired: dia.nome}).sort({nomeJapones: 1})
+    const result = await animesDoDia.toArray()
+    return result
+}
+
+*/
+
+async function getAnimesOnGoingAndDias(client){
+    try{
+        await client.connect()
+        const animes = await getAnimesOnGoing(client)
+        const dias = await getDias(client)
+        return {animes, dias}
+    } finally {
+        client.close()
+    }
+}
+
 async function getAnimesOnGoing(client){
-    const animes = await client.db('pweb1').collection('animes').find({weekaired: {$ne: ""}}).sort({nomeJapones: 1})
+    const animes = await client.db('pweb1').collection('animes').find({weekaired: {$ne: ""}, status: "Em Andamento"}).sort({nomeJapones: 1})
     const result = await animes.toArray()
     return result
 }
@@ -82,17 +97,6 @@ async function getAnimesOnGoing(client){
 async function getDias(client){
     const dias = await client.db('pweb1').collection('dias').find({})
     const result = await dias.toArray()
-    return result
-}
-
-async function findDia(client, diaUrl){
-    const dia = await client.db('pweb1').collection('dias').findOne({url: diaUrl})
-    return dia
-}
-
-async function findAnimesByDia(client, dia){
-    const animesDoDia = client.db('pweb1').collection('animes').find({weekaired: dia.nome}).sort({nomeJapones: 1})
-    const result = await animesDoDia.toArray()
     return result
 }
 

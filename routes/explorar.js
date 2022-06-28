@@ -28,6 +28,46 @@ router.get('/', function(req, res, next){
         }
     })
 })
+
+
+async function getAnimesAndGeneros(client){
+    try{
+        await client.connect()
+        const animes = await getAnimes(client)
+        const generos = await getGeneros(client)
+        return {animes, generos}
+    } finally {
+        client.close()
+    }
+}
+
+async function getAnimes(client){
+    const animes = await client.db('pweb1').collection('animes').find({}).sort({nomeJapones: 1})
+    const result = await animes.toArray()
+    return result
+}
+
+async function getGeneros(client){
+    const generos = await client.db('pweb1').collection('generos').find({})
+    const result = await generos.toArray()
+    return result
+}
+
+function getLoggedUser(req){
+    const authToken = req.cookies['AuthToken']
+    const user = authTokens[authToken]
+    return user
+}
+
+function isLogged(req){
+    const authToken = req.cookies['AuthToken'];
+    return authTokens[authToken] ? true : false
+}
+
+module.exports = router;
+
+/*
+
 router.get('/:generoUrl', function(req, res, next){
     findAnimesByGenerosAndGeneros(client, req.params['generoUrl']).then(({animesGenero, generos}) => {
         if(isLogged(req)){
@@ -48,16 +88,6 @@ router.get('/:generoUrl', function(req, res, next){
     })
 });
 
-async function getAnimesAndGeneros(client){
-    try{
-        await client.connect()
-        const animes = await getAnimes(client)
-        const generos = await getGeneros(client)
-        return {animes, generos}
-    } finally {
-        client.close()
-    }
-}
 
 async function findAnimesByGenerosAndGeneros(client, generoUrl){
     try{
@@ -71,19 +101,6 @@ async function findAnimesByGenerosAndGeneros(client, generoUrl){
     }
 }
 
-
-async function getAnimes(client){
-    const animes = await client.db('pweb1').collection('animes').find({}).sort({nomeJapones: 1})
-    const result = await animes.toArray()
-    return result
-}
-
-async function getGeneros(client){
-    const generos = await client.db('pweb1').collection('generos').find({})
-    const result = await generos.toArray()
-    return result
-}
-
 async function findGenero(client, generoUrl){
     const genero = await client.db('pweb1').collection('generos').findOne({url: generoUrl})
     return genero
@@ -94,16 +111,4 @@ async function findAnimesByGenero(client, genero){
     const result = await animesGenero.toArray()
     return result
 }
-
-function getLoggedUser(req){
-    const authToken = req.cookies['AuthToken']
-    const user = authTokens[authToken]
-    return user
-}
-
-function isLogged(req){
-    const authToken = req.cookies['AuthToken'];
-    return authTokens[authToken] ? true : false
-}
-
-module.exports = router;
+*/
